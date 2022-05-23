@@ -3,7 +3,7 @@ const generateJWT = require('../utils/generateJWT');
 
 const createUser = async (req, res) => {
   const { displayName, email, password, image } = req.body;
-  const user = { displayName, email, password, image };
+  const user = { email };
   const token = generateJWT(user);
 
   if (user) {

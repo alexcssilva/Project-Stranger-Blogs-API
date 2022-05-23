@@ -1,16 +1,12 @@
-// const jwt = require('jsonwebtoken');
-const { User } = require('../models');
-const generateJWT = require('./generateJWT');
+const { loginUser } = require('../services/loginService');
+const generateJWT = require('../utils/generateJWT');
 
-const validateBody = async (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
-  const userLogin = await User.findOne({ where: { email } });
+  const userLogin = await loginUser(email);
   const user = { email, password };
   const token = generateJWT(user);
 
-  if (!email || !password) {
-    return res.status(400).json({ message: 'Some required fields are missing' });
-  }
   if (!userLogin) {
     return res.status(400).json({ message: 'Invalid fields' });
   }
@@ -19,5 +15,5 @@ const validateBody = async (req, res) => {
 };
 
 module.exports = {
-  validateBody,
+  login,
 };

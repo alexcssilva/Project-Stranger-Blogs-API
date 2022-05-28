@@ -1,10 +1,9 @@
-const { getInfoPost } = require('../services/blogPostService');
+const { getInfoPost, getInfoPostId } = require('../services/blogPostService');
 const { newBlogPost } = require('../services/postService');
 
 const createBlogPost = async (req, res) => {
   try {
     const newBlog = await newBlogPost(req.user.payload, req.body);
-    console.log('; newBlog\n\n\n\n\n\n\n', newBlog);
 
     return res.status(201).json(newBlog);
   } catch (err) {
@@ -18,7 +17,20 @@ const getInfoBlogPost = async (_req, res) => {
   res.status(200).json(infoBlog);
 };
 
+const getInfoBlogPostId = async (req, res) => {
+  const { id } = req.params;
+
+  const infoBlog = await getInfoPostId(id);
+
+  if (!infoBlog) {
+    return res.status(404).json({ message: 'Post does not exist' });
+  }
+
+  res.status(200).json(infoBlog);
+};
+
 module.exports = {
   createBlogPost,
   getInfoBlogPost,
+  getInfoBlogPostId,
 };

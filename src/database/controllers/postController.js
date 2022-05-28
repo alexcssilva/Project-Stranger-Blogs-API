@@ -13,7 +13,6 @@ const createBlogPost = async (req, res) => {
 };
 
 const getInfoBlogPost = async (_req, res) => {
-  
   const infoBlog = await getInfoPost();
 
   res.status(200).json(infoBlog);

@@ -12,4 +12,6 @@ postRouter.post('/',
   validateCategoryId,
   postController.createBlogPost);
 
+postRouter.get('/', validateToken, postController.getInfoBlogPost);
+
 module.exports = postRouter;

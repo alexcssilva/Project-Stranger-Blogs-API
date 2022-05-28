@@ -1,3 +1,4 @@
+const { getInfoPost } = require('../services/blogPostService');
 const { newBlogPost } = require('../services/postService');
 
 const createBlogPost = async (req, res) => {
@@ -11,6 +12,14 @@ const createBlogPost = async (req, res) => {
   }
 };
 
+const getInfoBlogPost = async (_req, res) => {
+  
+  const infoBlog = await getInfoPost();
+
+  res.status(200).json(infoBlog);
+};
+
 module.exports = {
   createBlogPost,
+  getInfoBlogPost,
 };

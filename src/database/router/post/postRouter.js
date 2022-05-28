@@ -14,4 +14,6 @@ postRouter.post('/',
 
 postRouter.get('/', validateToken, postController.getInfoBlogPost);
 
+postRouter.get('/:id', validateToken, postController.getInfoBlogPostId);
+
 module.exports = postRouter;

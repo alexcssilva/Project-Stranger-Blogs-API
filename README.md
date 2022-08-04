@@ -12,7 +12,7 @@ O Projeto Blogs API pôe em prática um desenvolmento de uma API e seus principi
 
 -   Heroku
 -   PM2
-- - JavaScript
+-   JavaScript
 
 #### Tecnologias utilizadas:
 
